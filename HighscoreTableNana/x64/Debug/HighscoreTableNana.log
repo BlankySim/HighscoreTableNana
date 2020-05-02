@@ -1,0 +1,2 @@
+﻿  HighscoreTable.cpp
+nana_v140_Debug_x86.lib(programming_interface.obj) : fatal error LNK1112: tipo de equipo del módulo 'x86' en conflicto con tipo de equipo de destino 'x64'
