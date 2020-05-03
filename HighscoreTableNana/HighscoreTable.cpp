@@ -10,13 +10,13 @@ using namespace HighscoreBega;
 void titleTextInit(label& title, label& names, label& scores, form& window);
 void initScoreSlots(Highscore& scoreTable);
 void initNameCaptions(Highscore scoreTable, label& slot1Name, label& slot2Name, label& slot3Name, label& slot4Name, label& slot5Name,
-	label& slot6Name, label& slot7Name, label& slot8Name, label& slot9Name, label& slot10Name);
+	label& slot6Name, label& slot7Name, label& slot8Name, label& slot9Name);
 void initScoreCaptions(Highscore scoreTable, label& slot1Score, label& slot2Score, label& slot3Score, label& slot4Score, label& slot5Score,
-	label& slot6Score, label& slot7Score, label& slot8Score, label& slot9Score, label& slot10Score);
+	label& slot6Score, label& slot7Score, label& slot8Score, label& slot9Score);
 
 int main()
 {
-	form window{ API::make_center(240,350) };
+	form window{ API::make_center(240,200) };
 	window.caption("Highscore Table");
 
 	label title{ window, rectangle(88,0,100,20) };
@@ -26,6 +26,7 @@ int main()
 	titleTextInit(title, names, scores, window);
 
 	Highscore scoreTable;
+	scoreTable.resetHighScore();
 	initScoreSlots(scoreTable);
 
 	label slot1Name{ window, rectangle(20,50,60,15) };
@@ -37,10 +38,9 @@ int main()
 	label slot7Name{ window, rectangle(20,140,60,15) };
 	label slot8Name{ window, rectangle(20,155,60,15) };
 	label slot9Name{ window, rectangle(20,170,60,15) };
-	label slot10Name{ window, rectangle(20,185,60,15)};
 
 	initNameCaptions(scoreTable, slot1Name, slot2Name, slot3Name, slot4Name, slot5Name,
-					slot6Name, slot7Name, slot8Name, slot9Name, slot10Name);
+					slot6Name, slot7Name, slot8Name, slot9Name);
 
 	label slot1Score{ window, rectangle(130,50,60,15) };
 	label slot2Score{ window, rectangle(130,65,60,15) };
@@ -51,10 +51,9 @@ int main()
 	label slot7Score{ window, rectangle(130,140,60,15) };
 	label slot8Score{ window, rectangle(130,155,60,15) };
 	label slot9Score{ window, rectangle(130,170,60,15) };
-	label slot10Score{ window, rectangle(130,185,60,15) };
 
-	initScoreCaptions(scoreTable, slot1Name, slot2Name, slot3Name, slot4Name, slot5Name,
-		slot6Name, slot7Name, slot8Name, slot9Name, slot10Name);
+	initScoreCaptions(scoreTable, slot1Score, slot2Score, slot3Score, slot4Score, slot5Score,
+		slot6Score, slot7Score, slot8Score, slot9Score);
 
 	window.show();
 	exec();
@@ -79,41 +78,38 @@ void initScoreSlots(Highscore& scoreTable)
 	scoreTable.SetNewHighScore("Pablo", 464564);
 	scoreTable.SetNewHighScore("Lauti", 546);
 	scoreTable.SetNewHighScore("Cami", 68646);
-	scoreTable.SetNewHighScore("Sergio", 5467867);
+	scoreTable.SetNewHighScore("Sergio", 47867);
 	scoreTable.SetNewHighScore("Fabio", 5464648);
 	scoreTable.SetNewHighScore("Laura", 85757);
-	scoreTable.SetNewHighScore("Lisa", 546786);
 	scoreTable.SetNewHighScore("Paula", 456);
 	scoreTable.SetNewHighScore("Oscar", 8668);
 	scoreTable.SetNewHighScore("Simon", 6856);
 }
 
 void initNameCaptions(Highscore scoreTable, label& slot1Name, label& slot2Name, label& slot3Name, label& slot4Name, label& slot5Name,
-	label& slot6Name, label& slot7Name, label& slot8Name, label& slot9Name, label& slot10Name)
+	label& slot6Name, label& slot7Name, label& slot8Name, label& slot9Name)
 {
-	slot1Name.caption(scoreTable.GetPlayer(0));
-	slot2Name.caption(scoreTable.GetPlayer(1));
-	slot3Name.caption(scoreTable.GetPlayer(2));
-	slot4Name.caption(scoreTable.GetPlayer(3));
-	slot5Name.caption(scoreTable.GetPlayer(4));
-	slot6Name.caption(scoreTable.GetPlayer(5));
-	slot7Name.caption(scoreTable.GetPlayer(6));
-	slot8Name.caption(scoreTable.GetPlayer(7));
-	slot9Name.caption(scoreTable.GetPlayer(8));
-	slot10Name.caption(scoreTable.GetPlayer(9));
+	slot1Name.caption(scoreTable.GetPlayer(1));
+	slot2Name.caption(scoreTable.GetPlayer(2));
+	slot3Name.caption(scoreTable.GetPlayer(3));
+	slot4Name.caption(scoreTable.GetPlayer(4));
+	slot5Name.caption(scoreTable.GetPlayer(5));
+	slot6Name.caption(scoreTable.GetPlayer(6));
+	slot7Name.caption(scoreTable.GetPlayer(7));
+	slot8Name.caption(scoreTable.GetPlayer(8));
+	slot9Name.caption(scoreTable.GetPlayer(9));
 }
 
 void initScoreCaptions(Highscore scoreTable, label& slot1Score, label& slot2Score, label& slot3Score, label& slot4Score, label& slot5Score,
-	label& slot6Score, label& slot7Score, label& slot8Score, label& slot9Score, label& slot10Score)
+	label& slot6Score, label& slot7Score, label& slot8Score, label& slot9Score)
 {
-	slot1Score.caption(to_nstring(scoreTable.GetScore(0)));
-	slot2Score.caption(to_nstring(scoreTable.GetScore(1)));
-	slot3Score.caption(to_nstring(scoreTable.GetScore(2)));
-	slot4Score.caption(to_nstring(scoreTable.GetScore(3)));
-	slot5Score.caption(to_nstring(scoreTable.GetScore(4)));
-	slot6Score.caption(to_nstring(scoreTable.GetScore(5)));
-	slot7Score.caption(to_nstring(scoreTable.GetScore(6)));
-	slot8Score.caption(to_nstring(scoreTable.GetScore(7)));
-	slot9Score.caption(to_nstring(scoreTable.GetScore(8)));
-	slot10Score.caption(to_nstring(scoreTable.GetScore(9)));
+	slot1Score.caption(to_nstring(scoreTable.GetScore(1)));
+	slot2Score.caption(to_nstring(scoreTable.GetScore(2)));
+	slot3Score.caption(to_nstring(scoreTable.GetScore(3)));
+	slot4Score.caption(to_nstring(scoreTable.GetScore(4)));
+	slot5Score.caption(to_nstring(scoreTable.GetScore(5)));
+	slot6Score.caption(to_nstring(scoreTable.GetScore(6)));
+	slot7Score.caption(to_nstring(scoreTable.GetScore(7)));
+	slot8Score.caption(to_nstring(scoreTable.GetScore(8)));
+	slot9Score.caption(to_nstring(scoreTable.GetScore(9)));
 }
